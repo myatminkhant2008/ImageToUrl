@@ -17,7 +17,7 @@ async function uploadImage(req,res) {
 
     res.status(200).json({
         message: "Image upload successfully",
-        imageUrl: "result.secure_url"
+        imageUrl: result.secure_url
     })
    }
    catch(error) {
