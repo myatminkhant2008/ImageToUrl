@@ -8,7 +8,7 @@ const upload = multer({
     dest: "Upload/",
 })
 
-router.post('/image',upload.single("image"),uploadImage);
+router.post('/image',upload.array("images",5),uploadImage);
 
 export {router};
 
