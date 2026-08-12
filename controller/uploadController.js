@@ -7,27 +7,17 @@ cloudinary.config({
 })
 async function uploadImage(req,res) {
     try{
-    if(!req.files || req.files.length === 0) {
+    if(!req.file) {
         return res.status(400).json({message: "Image is required",})
     }
 
-    const uploadedImages = [];
-    for (const file of req.files){
-       const result =await cloudinary.uploader.upload(req.file.path,{
+    const result =await cloudinary.uploader.upload(req.file.path,{
         folder: "MIO AI",
     });
 
-    uploadImage.push({
-        url: result.secure_url,
-        public_id: result.public_id,
-    })
-    }
-
-    
     res.status(200).json({
         message: "Image upload successfully",
-        count: uploadImage.length,
-        images: uploadImage,
+        imageUrl: "result.secure_url"
     })
    }
    catch(error) {
